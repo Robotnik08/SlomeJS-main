@@ -175,9 +175,14 @@ function checkInbounds (x, y) {
     }
     return false;
 }
-function GetMousePosition (ev) {
-    mouseX = (ev.clientX - con.canvas.width/4 - 2)/UnitSize*2;
-    mouseY = (ev.clientY - con.canvas.height/4 - 2)/UnitSize*2;
+function GetMousePosition (evt) {
+    var rect = con.canvas.getBoundingClientRect();
+    var scaleX = con.canvas.width / rect.width;
+    var scaleY = con.canvas.height / rect.height;
+    mouseX = ((((evt.clientX - rect.left) * scaleX)-rect.right/2*scaleX)/UnitSize*2)/2;
+    mouseY = ((((evt.clientY - rect.top) * scaleY)-rect.bottom/2*scaleY)/UnitSize*2)/2;
+    // mouseX = (evt.clientX - con.canvas.width/4 - 2)*scaleX/UnitSize*2;
+    // mouseY = (evt.clientY - con.canvas.height/4 - 2)*scaleY/UnitSize*2;
 }
 function Move ()
 {
@@ -317,8 +322,8 @@ function draw ()
 {
     con.drawImage(Skybox,0,0,con.canvas.width,con.canvas.height);
     con.drawImage(Skybox2,0,800,con.canvas.width,con.canvas.height/1.2);
-    selectedTile.x = Math.round(positionX + mouseX - 0.09);
-    selectedTile.y = Math.round(positionY + mouseY - 0.16);
+    selectedTile.x = Math.round(positionX + mouseX + 2);
+    selectedTile.y = Math.round(positionY + mouseY + 0.8);
     let hasFill = false;
     let needFillX = 0;
     let needFillY = 0;
@@ -343,7 +348,7 @@ function draw ()
     }
     if (hasFill)
     {
-        con.fillStyle = "rgba(255, 255, 255, 0.1)";
+        con.fillStyle = "rgba(255, 255, 255, 0.5)";
         con.fillRect(needFillX,needFillY,UnitSize*1.01,UnitSize*1.01)
     }
     con.fillStyle = "rgba(255, 255, 255, 1)";
@@ -354,7 +359,7 @@ function draw ()
     }
     con.drawImage(Playerimg,con.canvas.width/2 - UnitSize/2 +18,con.canvas.height/2 - UnitSize/2 + 32,UnitSize*(hboxX*2),UnitSize*(hboxX*2));
     con.font = "70px Georgia";
-    con.fillText("SlomeJs a0.0.6", 10, 60);
+    con.fillText("SlomeJs a0.0.7", 10, 60);
     con.fillText("FPS=" + CurrentFPS + ", mouseX=" + Math.round((positionX + mouseX)*1000)/1000 + ", mouseY=" + Math.round((positionY + mouseY)*1000)/1000, 10, 130);
     con.fillText("X=" + Math.round(positionX*1000)/1000, 10, 200);
     con.fillText("Y=" + Math.round(positionY*1000)/1000, 10, 270);

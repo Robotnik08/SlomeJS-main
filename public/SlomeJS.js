@@ -152,12 +152,15 @@ setInterval(function() {
     }
 }, 1000/60);
 function placeBlockOnMouse () {
-    changeBlockSend (selectedTile.x, selectedTile.y, 3, true);
+    changeBlockSend (selectedTile.x, selectedTile.y, 3, false);
+}
+function breakBlockOnMouse () {
+    changeBlockSend (selectedTile.x, selectedTile.y, 0, true);
 }
 function changeBlockSend (x, y, ID, replace) {
     if (doneLoading)
     {
-        if ((replace || (!replace && map[x][y] == 0)) && checkInbounds(x + 6, mapSizeY - y - 2)) {
+        if ((replace || (!replace && map[x + 6][mapSizeY - y - 2] == 0)) && checkInbounds(x + 6, mapSizeY - y - 2)) {
             var dataSend = {
                 posX: x + 6,
                 posY: mapSizeY - y - 2,
@@ -181,8 +184,6 @@ function GetMousePosition (evt) {
     var scaleY = con.canvas.height / rect.height;
     mouseX = ((((evt.clientX - rect.left) * scaleX)-rect.right/2*scaleX)/UnitSize*2)/2;
     mouseY = ((((evt.clientY - rect.top) * scaleY)-rect.bottom/2*scaleY)/UnitSize*2)/2;
-    // mouseX = (evt.clientX - con.canvas.width/4 - 2)*scaleX/UnitSize*2;
-    // mouseY = (evt.clientY - con.canvas.height/4 - 2)*scaleY/UnitSize*2;
 }
 function Move ()
 {
@@ -359,7 +360,7 @@ function draw ()
     }
     con.drawImage(Playerimg,con.canvas.width/2 - UnitSize/2 +18,con.canvas.height/2 - UnitSize/2 + 32,UnitSize*(hboxX*2),UnitSize*(hboxX*2));
     con.font = "70px Georgia";
-    con.fillText("SlomeJs a0.0.7", 10, 60);
+    con.fillText("SlomeJs a0.0.8", 10, 60);
     con.fillText("FPS=" + CurrentFPS + ", mouseX=" + Math.round((positionX + mouseX)*1000)/1000 + ", mouseY=" + Math.round((positionY + mouseY)*1000)/1000, 10, 130);
     con.fillText("X=" + Math.round(positionX*1000)/1000, 10, 200);
     con.fillText("Y=" + Math.round(positionY*1000)/1000, 10, 270);

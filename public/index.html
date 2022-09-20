@@ -10,7 +10,7 @@
             <img src="logo.png" id="logo">
         </header>
         <main>
-            <canvas id="Main" onmousemove="GetMousePosition(event)" onclick="placeBlockOnMouse()"></canvas>
+            <canvas id="Main" onmousemove="GetMousePosition(event)" onclick="breakBlockOnMouse()" oncontextmenu="event.preventDefault(); placeBlockOnMouse();"></canvas>
             <script src="/socket.io/socket.io.js"></script>
             <script src="SlomeJS.js"></script>
         </main>

@@ -323,8 +323,8 @@ function draw ()
 {
     con.drawImage(Skybox,0,0,con.canvas.width,con.canvas.height);
     con.drawImage(Skybox2,0,800,con.canvas.width,con.canvas.height/1.2);
-    selectedTile.x = Math.round(positionX + mouseX + 2);
-    selectedTile.y = Math.round(positionY + mouseY + 0.8);
+    selectedTile.x = Math.round(positionX + mouseX + 8.3);
+    selectedTile.y = Math.round(positionY + mouseY + 4.8);
     let hasFill = false;
     let needFillX = 0;
     let needFillY = 0;
@@ -350,7 +350,7 @@ function draw ()
     if (hasFill)
     {
         con.fillStyle = "rgba(255, 255, 255, 0.5)";
-        con.fillRect(needFillX,needFillY,UnitSize*1.01,UnitSize*1.01)
+        con.fillRect(needFillX,needFillY,UnitSize*1.01,UnitSize*1.01);
     }
     con.fillStyle = "rgba(255, 255, 255, 1)";
     for (let x = 0; x < players.length; x++) {

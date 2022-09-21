@@ -1,18 +1,66 @@
 <!DOCTYPE html>
-<html>
+<html lang="nl">
     <head>
         <title>SlomeJS</title>
         <link rel="icon" href="Assets/player/char.png">
         <link rel="stylesheet" href="Stylesheet.css">
     </head>
     <body>
-        <header id="head">
-            <img src="logo.png" id="logo">
-        </header>
-        <main>
-            <canvas id="Main" onmousemove="GetMousePosition(event)" onclick="breakBlockOnMouse()" oncontextmenu="event.preventDefault(); placeBlockOnMouse();"></canvas>
-            <script src="/socket.io/socket.io.js"></script>
-            <script src="SlomeJS.js"></script>
-        </main>
+        <div id="container">
+            <div id="header">
+                <img src="https://via.placeholder.com/350x350" alt="" />
+                <h1>Je Naam</h1>
+            </div>
+            <div id="content">
+                <h2>Over Mij</h2>
+                <div id="intro">
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sapiente
+                  architecto, sint molestias vitae, numquam at ipsam placeat
+                  exercitationem natus animi quasi rerum laboriosam, dolores omnis optio
+                  voluptatem aut alias. Quia.
+                </div>
+                <div id="overig">
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Animi non,
+                  ipsa amet, molestiae consequuntur iste earum quaerat, beatae minus
+                  expedita architecto? Assumenda eaque id voluptates blanditiis et?
+                  Corrupti, dolore asperiores.
+                </div>
+                <div id="kennis">
+                  <ul>
+                    <li>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</li>
+                    <li>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</li>
+                    <li>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</li>
+                    <li>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</li>
+                  </ul>
+                </div>
+              </div>
+              <div id="experimental">
+                <h2>Experimental Zone</h2>
+                <main>
+                    <canvas id="Main" onmousemove="GetMousePosition(event)" onclick="breakBlockOnMouse()" oncontextmenu="event.preventDefault(); placeBlockOnMouse();"></canvas>
+                    <script src="/socket.io/socket.io.js"></script>
+                    <script src="SlomeJS.js"></script>
+                </main>
+             </div>
+             <div id="footer">
+                &copy; 2022
+                <br />
+                <ul>
+                  <li>
+                    <a href="#" title="Instagram"
+                      ><img src="assets/images/instagram.png" alt="Instagram"
+                    /></a>
+                  </li>
+                  <li>
+                    <a href="#" title="Youtube"
+                      ><img src="assets/images/youtube.png" alt="Youtube"
+                    /></a>
+                  </li>
+                </ul>
+              </div>
+              
+        </div>
+        
+        
     </body>
 </html>

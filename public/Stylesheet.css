@@ -13,7 +13,7 @@ main {
 }
 #head {
     padding: 30px;
-    background-color: red;
+    background-color: rgb(255, 0, 212);
 }
 #logo {
     align-self: flex-start;
@@ -27,32 +27,33 @@ main {
 }
 
 body {
-    background-color: rgba(0, 0, 0, 0.784);
+    background-color: rgba(255, 0, 0, 0.784);
 }
 
 #container {
-    width: 960px;
+    width: 1280px;
     margin: 0 auto;
-    border: 1px solid #000000;
+    border: 1px solid #ffffff;
 }
 
 #header {
     text-align: center;
     padding-top: 50px;
     padding-bottom: 50px;
-    background-color: #984447;
+    background-color: #10b8eb;
 }
 
 #header img {
     width:250px;
     height: 250px;
     border-radius: 50%;
-    border: 10px solid #fff;
+    border: 10px solid #000;
+    transition: transform 2s ease-in-out;
 }
 
 #header img:hover{
-    transition: 0.70s;
-    transform: rotate(360deg);
+    transition: 1.40s;
+    transform: scale(4);
 }
 
 #header h1 {
@@ -106,4 +107,8 @@ padding-top: 20px;
 
 #footer ul li a {
     padding: 10px;
+}
+#footer ul li a img {
+    width: 40px;
+    height: auto;
 }

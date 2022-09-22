@@ -12,6 +12,7 @@ var socket = io();
 let mapSizeX = 0;
 let mapSizeY = 0;
 let players = [];
+let selBlock = 1;
 class Player {
     constructor(UUID, posX, posY) {
         this.UUID = UUID;
@@ -74,7 +75,21 @@ const img2 = new Image();
 img2.src = "./Assets/Blocks/dirt.png";
 const img3 = new Image();
 img3.src = "./Assets/Blocks/stone.png";
-const mapcolours = [img0, img1, img2, img3];
+const img4 = new Image();
+img4.src = "./Assets/Blocks/oak_plank.png";
+const img5 = new Image();
+img5.src = "./Assets/Blocks/oak_log.png";
+const img6 = new Image();
+img6.src = "./Assets/Blocks/glass.png";
+const img7 = new Image();
+img7.src = "./Assets/Blocks/cobblestone.png";
+const img8 = new Image();
+img8.src = "./Assets/Blocks/workbench.png";
+const img9 = new Image();
+img9.src = "./Assets/Blocks/spruce_plank.png";
+const img10 = new Image();
+img10.src = "./Assets/Blocks/spruce_log.png";
+const mapcolours = [img0, img1, img2, img3, img4, img5, img6, img7, img8, img9, img10];
 
 //Constants, modify for different settings! Experiment!
 const Gravity = 9.81*2;
@@ -122,9 +137,19 @@ document.addEventListener('keydown', function(event) {
         Keys.space = true;
     }
 });
+function changeSelblock() {
+    if (selBlock == mapcolours.length - 1) {
+        selBlock = 1;
+        return;
+    }
+    selBlock++;
+}
 document.addEventListener('keyup', function(event) {
     if(event.keyCode == 65) {
         Keys.a = false;
+    }
+    if(event.keyCode == 66) {
+        changeSelblock();
     }
     if(event.keyCode == 68) {
         Keys.d = false;
@@ -152,7 +177,7 @@ setInterval(function() {
     }
 }, 1000/60);
 function placeBlockOnMouse () {
-    changeBlockSend (selectedTile.x, selectedTile.y, 3, false);
+    changeBlockSend (selectedTile.x, selectedTile.y, selBlock, false);
 }
 function breakBlockOnMouse () {
     changeBlockSend (selectedTile.x, selectedTile.y, 0, true);
@@ -350,7 +375,7 @@ function draw ()
     if (hasFill)
     {
         con.fillStyle = "rgba(255, 255, 255, 0.5)";
-        con.fillRect(needFillX,needFillY,UnitSize*1.01,UnitSize*1.01)
+        con.fillRect(needFillX,needFillY,UnitSize*1.01,UnitSize*1.01);
     }
     con.fillStyle = "rgba(255, 255, 255, 1)";
     for (let x = 0; x < players.length; x++) {
@@ -360,10 +385,11 @@ function draw ()
     }
     con.drawImage(Playerimg,con.canvas.width/2 - UnitSize/2 +18,con.canvas.height/2 - UnitSize/2 + 32,UnitSize*(hboxX*2),UnitSize*(hboxX*2));
     con.font = "70px Georgia";
-    con.fillText("SlomeJs a0.0.8", 10, 60);
+    con.fillText("SlomeJs a0.0.9", 10, 60);
     con.fillText("FPS=" + CurrentFPS + ", mouseX=" + Math.round((positionX + mouseX)*1000)/1000 + ", mouseY=" + Math.round((positionY + mouseY)*1000)/1000, 10, 130);
     con.fillText("X=" + Math.round(positionX*1000)/1000, 10, 200);
     con.fillText("Y=" + Math.round(positionY*1000)/1000, 10, 270);
+    con.drawImage(mapcolours[selBlock],10 ,340,240,240);
 }
 function RandomChance(chance)
 {
